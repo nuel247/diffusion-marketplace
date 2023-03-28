@@ -17,7 +17,7 @@ jobs:
     parallelism: 83
     docker:
       # specify the version you desire here
-      - image: circleci/ruby:2.7-node-browsers
+      - image: cimg/ruby:3.2.1-node-browsers
         environment:
           RAILS_ENV: test
           MAX_THREADS: 2
