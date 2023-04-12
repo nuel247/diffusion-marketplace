@@ -14,7 +14,7 @@ workflows:
               - hold
 jobs:
   test:
-    parallelism: 83
+    parallelism: 2
     docker:
       # specify the version you desire here
       - image: cimg/ruby:2.7.8-browsers
