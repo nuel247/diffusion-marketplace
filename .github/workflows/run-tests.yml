@@ -1,8 +1,8 @@
-name: department-of-veterans-affairs/diffusion-marketplace/run-tests
+name: run-tests
 on:
   push:
     branches:
-    - master
+    - QA
 jobs:
   hold:
     environment:
@@ -44,6 +44,10 @@ jobs:
     needs:
     - hold
     steps:
+    # This Docker file changes sets USER to circleci instead of using the default user, so we need to update file permissions for this image to work on GH Actions.
+    # See https://docs.github.com/actions/using-github-hosted-runners/about-github-hosted-runners#docker-container-filesystem
+    - name: Setup file system permissions
+      run: sudo chmod -R 777 $GITHUB_WORKSPACE /github /__w/_temp
     - uses: actions/checkout@v3.3.0
     - name: restore_cache
       uses: actions/cache@v3.3.1
